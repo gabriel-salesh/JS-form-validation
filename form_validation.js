@@ -21,10 +21,12 @@ function showSuccess(input) {
 
 
 function checkLength(input, min, max) {
-  if (input.value.length < min) {
+  if (input.value.length < min && input.value.trim() !== '') {
     showError(input, `${input.id} must be at least ${min} characters`);
   } else if (input.value.length > max) {
     showError(input, `${input.id} must be less than ${max + 1}`);
+  } else if (input.value.trim() === '') {
+    input.parentElement.classList.remove('error');
   } else {
     showSuccess(input);
   }
